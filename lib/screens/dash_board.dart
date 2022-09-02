@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:noor_e_umrah/screens/home_screen.dart';
 
+import '../utils/app_style.dart';
+import '../utils/string_manager.dart';
+
 class MyDashBoard extends StatefulWidget {
   const MyDashBoard({Key? key}) : super(key: key);
 
@@ -31,6 +34,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
       backgroundColor: Colors.white.withAlpha(55),
       body: Stack(
         children: [
+          screenS.elementAt(currentIndex),
           Positioned(
             bottom: 0,
             left: 0,
@@ -38,72 +42,130 @@ class _MyDashBoardState extends State<MyDashBoard> {
               width: size.width,
               height: 80,
               child: Stack(
-                // overflow: Overflow.visible,
                 children: [
-                  CustomPaint(
-                    size: Size(size.width, 80),
-                    painter: BNBCustomPainter(),
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(255, 24, 141, 28)
+                              .withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset:
+                              const Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: CustomPaint(
+                      size: Size(size.width, 80),
+                      painter: BNBCustomPainter(),
+                    ),
                   ),
                   Center(
-                    heightFactor: 0.6,
-                    child: FloatingActionButton(
-                        backgroundColor: Colors.orange,
-                        elevation: 0.1,
-                        onPressed: () {},
-                        child: const Icon(Icons.shopping_basket)),
+                    heightFactor: 0.7,
+                    child: SizedBox(
+                      height: 62,
+                      width: 70,
+                      child: FloatingActionButton(
+                          backgroundColor: AppStyle.primaryColor,
+                          elevation: 0.5,
+                          onPressed: () {
+                            setBottomBarIndex(2);
+                          },
+                          child: const Icon(
+                            Icons.book_online_outlined,
+                            size: 25,
+                          )),
+                    ),
                   ),
                   SizedBox(
                     width: size.width,
                     height: 80,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.home,
-                            color: currentIndex == 0
-                                ? Colors.orange
-                                : Colors.grey.shade400,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.luggage,
+                                  size: 25,
+                                  color: currentIndex == 0
+                                      ? AppStyle.primaryColor
+                                      : Colors.grey.shade400,
+                                ),
+                                onPressed: () {
+                                  setBottomBarIndex(0);
+                                },
+                                splashColor: Colors.white,
+                              ),
+                              IconButton(
+                                  icon: Icon(
+                                    Icons.local_airport,
+                                    size: 25,
+                                    color: currentIndex == 1
+                                        ? AppStyle.primaryColor
+                                        : Colors.grey.shade400,
+                                  ),
+                                  onPressed: () {
+                                    setBottomBarIndex(1);
+                                  }),
+                              Container(
+                                width: size.width * 0.20,
+                              ),
+                              IconButton(
+                                  icon: Icon(
+                                    Icons.stars,
+                                    size: 25,
+                                    color: currentIndex == 3
+                                        ? AppStyle.primaryColor
+                                        : Colors.grey.shade400,
+                                  ),
+                                  onPressed: () {
+                                    setBottomBarIndex(3);
+                                  }),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.account_circle,
+                                  size: 25,
+                                  color: currentIndex == 4
+                                      ? AppStyle.primaryColor
+                                      : Colors.grey.shade400,
+                                ),
+                                onPressed: () {
+                                  setBottomBarIndex(4);
+                                },
+                              ),
+                            ],
                           ),
-                          onPressed: () {
-                            setBottomBarIndex(0);
-                          },
-                          splashColor: Colors.white,
-                        ),
-                        IconButton(
-                            icon: Icon(
-                              Icons.restaurant_menu,
-                              color: currentIndex == 1
-                                  ? Colors.orange
-                                  : Colors.grey.shade400,
-                            ),
-                            onPressed: () {
-                              setBottomBarIndex(1);
-                            }),
-                        Container(
-                          width: size.width * 0.20,
-                        ),
-                        IconButton(
-                            icon: Icon(
-                              Icons.bookmark,
-                              color: currentIndex == 2
-                                  ? Colors.orange
-                                  : Colors.grey.shade400,
-                            ),
-                            onPressed: () {
-                              setBottomBarIndex(2);
-                            }),
-                        IconButton(
-                            icon: Icon(
-                              Icons.notifications,
-                              color: currentIndex == 3
-                                  ? Colors.orange
-                                  : Colors.grey.shade400,
-                            ),
-                            onPressed: () {
-                              setBottomBarIndex(3);
-                            }),
-                      ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                StringManager.outStation,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                StringManager.outStation,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Container(
+                                width: size.width * 0.15,
+                              ),
+                              const Text(
+                                StringManager.outStation,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                StringManager.outStation,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
