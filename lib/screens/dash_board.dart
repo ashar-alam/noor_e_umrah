@@ -70,7 +70,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                           backgroundColor: AppStyle.primaryColor,
                           elevation: 0.5,
                           onPressed: () {
-                            setBottomBarIndex(2);
+                            // setBottomBarIndex(2);
                           },
                           child: const Icon(
                             Icons.book_online_outlined,
@@ -82,15 +82,15 @@ class _MyDashBoardState extends State<MyDashBoard> {
                     width: size.width,
                     height: 80,
                     child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               IconButton(
                                 icon: Icon(
-                                  Icons.luggage,
+                                  Icons.home,
                                   size: 25,
                                   color: currentIndex == 0
                                       ? AppStyle.primaryColor
@@ -103,39 +103,39 @@ class _MyDashBoardState extends State<MyDashBoard> {
                               ),
                               IconButton(
                                   icon: Icon(
-                                    Icons.local_airport,
+                                    Icons.search,
                                     size: 25,
                                     color: currentIndex == 1
                                         ? AppStyle.primaryColor
                                         : Colors.grey.shade400,
                                   ),
                                   onPressed: () {
-                                    setBottomBarIndex(1);
+                                    // setBottomBarIndex(1);
                                   }),
                               Container(
-                                width: size.width * 0.20,
+                                width: size.width * 0.15,
                               ),
                               IconButton(
                                   icon: Icon(
-                                    Icons.stars,
+                                    Icons.bookmark,
                                     size: 25,
                                     color: currentIndex == 3
                                         ? AppStyle.primaryColor
                                         : Colors.grey.shade400,
                                   ),
                                   onPressed: () {
-                                    setBottomBarIndex(3);
+                                    // setBottomBarIndex(3);
                                   }),
                               IconButton(
                                 icon: Icon(
-                                  Icons.account_circle,
+                                  Icons.settings,
                                   size: 25,
                                   color: currentIndex == 4
                                       ? AppStyle.primaryColor
                                       : Colors.grey.shade400,
                                 ),
                                 onPressed: () {
-                                  setBottomBarIndex(4);
+                                  // setBottomBarIndex(4);
                                 },
                               ),
                             ],
@@ -144,22 +144,25 @@ class _MyDashBoardState extends State<MyDashBoard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const Text(
-                                StringManager.outStation,
+                                StringManager.home,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
+                              Container(
+                                width: size.width * 0.02  ,
+                              ),
                               const Text(
-                                StringManager.outStation,
+                                StringManager.haj,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Container(
                                 width: size.width * 0.15,
                               ),
                               const Text(
-                                StringManager.outStation,
+                                StringManager.bookMark,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               const Text(
-                                StringManager.outStation,
+                                StringManager.setting,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ],
