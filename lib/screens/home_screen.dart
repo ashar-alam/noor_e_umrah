@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:noor_e_umrah/utils/app_style.dart';
 import 'package:noor_e_umrah/utils/string_manager.dart';
@@ -15,89 +16,98 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-            AppStyle.primaryDark,
-            AppStyle.primaryColor,
-            AppStyle.primaryLight,
-          ]),
-        ),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              height: Utils.getHight(context) / 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    verticalDirection: VerticalDirection.up,
-                    children: const [
-                      Icon(
-                        Icons.location_on,
-                        color: AppStyle.white,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        StringManager.newDelhi,
-                        style: TextStyle(color: AppStyle.white, fontSize: 15),
-                      ),
-                      SizedBox(
-                        width: 220,
-                      ),
-                      Icon(
-                        Icons.notifications,
-                        color: AppStyle.white,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                        hintText: "Search here",
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                        prefixIcon: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.search),
-                        ),
-                        fillColor: AppStyle.white,
-                        focusColor: AppStyle.white),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+              AppStyle.primaryDark,
+              AppStyle.primaryColor,
+              AppStyle.primaryLight,
+            ]),
+          ),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: Utils.getHight(context) / 40,
               ),
-            ),
-            Expanded(
-              child: Container(
-                // height: 200,
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      verticalDirection: VerticalDirection.up,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.location_on,
+                            color: AppStyle.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text(
+                          StringManager.newDelhi,
+                          style: TextStyle(color: AppStyle.white, fontSize: 15),
+                        ),
+                        const SizedBox(
+                          width: 180,
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications,
+                            color: AppStyle.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    // TextField(
+                    //   decoration: InputDecoration(
+                    //       filled: true,
+                    //       hintText: "Search here",
+                    //       border: const OutlineInputBorder(
+                    //         borderRadius: BorderRadius.all(Radius.circular(30)),
+                    //       ),
+                    //       prefixIcon: IconButton(
+                    //         onPressed: () {},
+                    //         icon: const Icon(Icons.search),
+                    //       ),
+                    //       fillColor: AppStyle.white,
+                    //       focusColor: AppStyle.white),
+                    // ),
+                  ],
+                ),
+              ),
+              Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(60),
-                    topRight: Radius.circular(60),
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Column(
                     children: [
                       Card(
-                        margin: const EdgeInsets.all(8),
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        // margin: const EdgeInsets.all(8),
                         color: AppStyle.lightGrey,
                         shadowColor: AppStyle.primaryLight,
                         elevation: 5,
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(15.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -324,62 +334,135 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                       ),
                       Card(
                         elevation: 5,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
                         color: AppStyle.lightGrey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text(
+                                StringManager.hajAndUmrahPackage,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CachedNetworkImage(
+                                    height: 40,
+                                    width: 60,
+                                    imageUrl:
+                                        "https://i.pinimg.com/236x/32/0b/48/320b485fcbf9ab8dd6069682b70d4e9d.jpg",
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                          colorFilter: const ColorFilter.mode(
+                                              Colors.red, BlendMode.colorBurn),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Text(
+                                    StringManager.deluxPackage,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.visibility_rounded,
+                                      size: 30,
+                                      color: AppStyle.primaryDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CachedNetworkImage(
+                                    height: 40,
+                                    width: 60,
+                                    imageUrl:
+                                        "https://i.pinimg.com/236x/32/0b/48/320b485fcbf9ab8dd6069682b70d4e9d.jpg",
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                          colorFilter: const ColorFilter.mode(
+                                              Colors.red, BlendMode.colorBurn),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Text(
+                                    StringManager.deluxPackage,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.visibility_rounded,
+                                      size: 30,
+                                      color: AppStyle.primaryDark,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        // margin: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: AppStyle.lightGrey,
+                          border: Border.all(color: AppStyle.black, width: 0.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              StringManager.hajAndUmrahPackage,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                ),
                                 const Text(
                                   StringManager.deluxPackage,
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                IconButton(
+                                TextButton(
                                   onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.visibility_rounded,
-                                    size: 30,
-                                    color: AppStyle.primaryDark,
-                                  ),
+                                  child: const Text(StringManager.learnMore),
                                 ),
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                ),
-                                const Text(
-                                  StringManager.deluxPackage,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.visibility_rounded,
-                                    size: 30,
-                                    color: AppStyle.primaryDark,
-                                  ),
-                                ),
-                              ],
-                            )
+                            
+                            // const Text(
+                            //   StringManager.loremSpem,
+                            //   style: TextStyle(
+                            //       fontSize: 20, fontWeight: FontWeight.bold),
+                            // ),
                           ],
                         ),
                       ),
@@ -387,8 +470,8 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

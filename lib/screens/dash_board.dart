@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:noor_e_umrah/screens/bottom_bar/haj.dart';
+import 'package:noor_e_umrah/screens/bottom_bar/quran.dart';
 import 'package:noor_e_umrah/screens/home_screen.dart';
 
 import '../utils/app_style.dart';
@@ -25,13 +27,14 @@ class _MyDashBoardState extends State<MyDashBoard> {
     final Size size = MediaQuery.of(context).size;
     List<Widget> screenS = const <Widget>[
       MyHomeScreen(),
-      // Airport(),
-      // Local(),
+      MyHaj(),
+      MyQuran(),
       // MyBooking(),
       // MyAccount()
     ];
     return Scaffold(
       backgroundColor: Colors.white.withAlpha(55),
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           screenS.elementAt(currentIndex),
@@ -70,7 +73,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                           backgroundColor: AppStyle.primaryColor,
                           elevation: 0.5,
                           onPressed: () {
-                            // setBottomBarIndex(2);
+                            setBottomBarIndex(2);
                           },
                           child: const Icon(
                             Icons.book_online_outlined,
@@ -110,7 +113,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                                         : Colors.grey.shade400,
                                   ),
                                   onPressed: () {
-                                    // setBottomBarIndex(1);
+                                    setBottomBarIndex(1);
                                   }),
                               Container(
                                 width: size.width * 0.15,
@@ -148,7 +151,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Container(
-                                width: size.width * 0.02  ,
+                                width: size.width * 0.02,
                               ),
                               const Text(
                                 StringManager.haj,
