@@ -76,7 +76,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                             setBottomBarIndex(2);
                           },
                           child: const Icon(
-                            Icons.book_online_outlined,
+                            Icons.auto_stories,
                             size: 25,
                           )),
                     ),
