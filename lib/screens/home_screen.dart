@@ -19,7 +19,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: double.infinity,
+          // width: double.infinity,
           decoration: const BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topCenter, colors: [
               AppStyle.primaryDark,

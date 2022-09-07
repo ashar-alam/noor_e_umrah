@@ -27,4 +27,9 @@ class StringManager{
    static const String myQuran = 'MyQuran';
    static const String surah = 'Surah';
    static const String para = 'Para';
+
+   //HajScreen
+   static const String hajUmrahAndMadina = 'Haj, Umrah & Madina';
+   static const String umrah = 'Umrah';
+   static const String madina = 'Madina';
 }
