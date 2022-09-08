@@ -6,7 +6,8 @@ import '../utils/app_style.dart';
 class MyIconButton extends StatelessWidget {
   IconData icon;
   String title;
-  MyIconButton({Key? key, required this.icon, required this.title})
+  void Function()?onPressed;
+  MyIconButton({Key? key, required this.icon, required this.title,this.onPressed})
       : super(key: key);
 
   @override
@@ -26,7 +27,7 @@ class MyIconButton extends StatelessWidget {
                 ),
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: onPressed,
                 icon: Icon(
                   icon,
                   size: 25,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noor_e_umrah/utils/app_style.dart';
 import 'package:noor_e_umrah/utils/string_manager.dart';
+import 'package:noor_e_umrah/widgets/video.dart';
 
 class MyHaj extends StatefulWidget {
   const MyHaj({Key? key}) : super(key: key);
@@ -36,9 +37,10 @@ class _MyHajState extends State<MyHaj> {
         ),
         body: const TabBarView(
           children: [
+            VideoPlayerApp(),
             // VideoPlayerCustom(),
             // VideoApp(),
-            Icon(Icons.flight, size: 350),
+            // Icon(Icons.flight, size: 350),
             Icon(Icons.directions_transit, size: 350),
             Icon(Icons.directions_car, size: 350),
           ],

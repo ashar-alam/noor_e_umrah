@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:noor_e_umrah/screens/bottom_bar/haj.dart';
 import 'package:noor_e_umrah/screens/bottom_bar/quran.dart';
+import 'package:noor_e_umrah/screens/bottom_bar/setting.dart';
 import 'package:noor_e_umrah/screens/home_screen.dart';
 
 import '../utils/app_style.dart';
 import '../utils/string_manager.dart';
+import 'bottom_bar/book_mark.dart';
 
 class MyDashBoard extends StatefulWidget {
   const MyDashBoard({Key? key}) : super(key: key);
@@ -29,8 +31,8 @@ class _MyDashBoardState extends State<MyDashBoard> {
       MyHomeScreen(),
       MyHaj(),
       MyQuran(),
-      // MyBooking(),
-      // MyAccount()
+      MyBookMark(),
+      MySetting(),
     ];
     return Scaffold(
       backgroundColor: Colors.white.withAlpha(55),
@@ -127,7 +129,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                                         : Colors.grey.shade400,
                                   ),
                                   onPressed: () {
-                                    // setBottomBarIndex(3);
+                                    setBottomBarIndex(3);
                                   }),
                               IconButton(
                                 icon: Icon(
@@ -138,7 +140,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                                       : Colors.grey.shade400,
                                 ),
                                 onPressed: () {
-                                  // setBottomBarIndex(4);
+                                  setBottomBarIndex(4);
                                 },
                               ),
                             ],
